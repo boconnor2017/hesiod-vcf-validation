@@ -33,7 +33,7 @@ cd hesiod-vcf-validation
 ## Generate VCF Configuration File in Markdown
 Save a `vcf.json` file to the `/usr/local/hesiod-vcf-validation/` folder and run the command below to create `vcf-validation.md`. *Note: The naming convention of the JSON file and the MD file are up to you.* 
 ```
-python3 hesiod-vcf-validate.py vcf.json vcf-validation.md
+python3 hesiod-vcf-validate.py --md vcf.json vcf-validation.md
 ```
 
 Import these markdown files to [Visual Studio](https://visualstudio.microsoft.com/), install the [Markdown PDF Extension for visual studio](https://marketplace.visualstudio.com/items?itemName=yzane.markdown-pdf), and export to PDF. 

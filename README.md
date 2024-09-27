@@ -30,6 +30,12 @@ cp -r hesiod/python/ hesiod-vcf-validation/hesiod
 cd hesiod-vcf-validation
 ```
 
+## Generate a VCF JSON File from XLS Prerequisite Workbook
+Save a `vcf-papw.xlsx` (VCF Planning and Preparation Workbook) file to the `/usr/local/hesiod-vcf-validation/` folder and run the command below to create `vcf.json`. *Note: The naming convention of the JSON file and the MD file are up to you.*
+```
+python3 hesiod-vcf-validate.py --xls vcf-papw.xlsx vcf.json
+```
+
 ## Generate VCF Configuration File in Markdown
 Save a `vcf.json` file to the `/usr/local/hesiod-vcf-validation/` folder and run the command below to create `vcf-validation.md`. *Note: The naming convention of the JSON file and the MD file are up to you.* 
 ```

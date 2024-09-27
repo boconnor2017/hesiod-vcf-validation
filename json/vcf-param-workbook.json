@@ -1,0 +1,35 @@
+{
+    "purpose" : "This json file contains the simplified structure of the prerequisite workbook by VCF version.",
+    "excelstructure" : [{
+       "version" : "5.2", 
+       "sheetspecs" : [
+            {
+                "tabname" :"Deployment Options"
+            },
+            {
+                "tabname" :"Version History"
+            },
+            {
+                "tabname" :"Management Domain Sizing Inputs"
+            },
+            {
+                "tabname" :"Network Inputs - Rack"
+            },
+            {
+                "tabname" :"Name & IP Address Inputs - VM"
+            },
+            {
+                "tabname" :"Name & IP Address Inputs - Rack"
+            },
+            {
+                "tabname" :"SDDC Inputs - Common"
+            },
+            {
+                "tabname" :"SDDC Inputs - Rack"
+            },
+            {
+                "tabname" :"Active Directory Inputs"
+            }]
+    }]
+        
+}

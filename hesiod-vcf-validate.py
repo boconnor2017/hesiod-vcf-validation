@@ -6,13 +6,19 @@ from hesiod import lib_paramiko as libpko
 
 # Import VCF libraries
 from lib import markdown as mdlib
+from lib import excel as xlslib
 
 # Import Standard Python libraries
 import os
 import sys
 
+# Import vcf parameters workbook json 
+vcf_param_workbook_json_str = libjson.populate_var_from_json_file("json", "vcf-param-workbook.json")
+vcf_param_workbook_json_py = libjson.load_json_variable(vcf_param_workbook_json_str)
+
 # Get args
 inputparams = sys.argv
+version = "5.2" #Hardcoded until VCF9
 
 # Import json configuration parameters
 this_script_name = os.path.basename(__file__)
@@ -51,8 +57,22 @@ def convert_json_to_markdown(inputparams):
     script = mdlib.get_validate_vcf_md_script(vcf_json_py)
     mdlib.write_cmd_to_script_file(script, inputparams[3])
 
-def convert_xls_to_json(inputparams):
-    print("Coming soon...")
+def convert_xls_to_json(inputparams, vcf_param_workbook_json_py, version):
+    # Get list of sheets from vcf-param-workbook.json (important because workbook changes by vcf version)
+    sheets_from_xls = xlslib.get_sheets_from_xls(vcf_param_workbook_json_py, version)
+    # For each sheet get the json
+    sheets_from_xls_as_json_str = []
+    sheets_from_xls_as_json_py = []
+    for sheet in sheets_from_xls:
+        json_str_from_xls = xlslib.get_json_str_from_xls(inputparams, sheet)
+        sheets_from_xls_as_json_str.append(json_str_from_xls)
+        json_py_from_xls = libjson.load_json_variable(json_str_from_xls)
+        sheets_from_xls_as_json_py.append(json_py_from_xls)
+    # Get important cells from the workbook and populate VCF json
+    new_vcf_json_py = xlslib.vcf_5_2_magic(sheets_from_xls_as_json_py)
+    # Write VCF json to file
+    libjson.dump_json_to_file(new_vcf_json_py, inputparams[3])
+    
 
 # Match args
 match_found = False 
@@ -72,7 +92,8 @@ else:
     match_found = False 
     match_found = match_xls(sys.argv)
     if match_found :
-        convert_xls_to_json(inputparams)
+        convert_xls_to_json(inputparams, vcf_param_workbook_json_py, version)
+        print("")
         print("Your JSON configuration file is ready.")
         print("File name: "+inputparams[3])
 

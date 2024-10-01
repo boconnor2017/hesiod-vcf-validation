@@ -239,7 +239,7 @@ def get_validate_vcf_md_script(vcf_json_py):
     dvs_spec_count = len(vcf_json_py["dvsSpecs"])
     i=0
     while i < dvs_spec_count:
-        mdline = ("| DVS "+str(i+1)+" Name |  |")
+        mdline = ("| DVS "+str(i+1)+" Name | "+str(vcf_json_py["dvsSpecs"][i]["dvsName"])+" |")
         markdown_script.append(mdline)
         mdline = ("| MTU | "+str(vcf_json_py["dvsSpecs"][i]["mtu"])+" |")
         markdown_script.append(mdline)

@@ -375,6 +375,14 @@ def vcf_5_2_magic(sheets_from_xls_as_json_py):
         mgt_cluster_evc_settings = mgt_cluster_evc_settings
     else:
         mgt_cluster_evc_settings = ""
+    # Populate info from Tab 7: "SDDC Inputs - Rack"
+    tab = 7
+    col_calibrationval = 0
+    row_calibrationval = -2
+    sddc_manager_network_pool_name = get_value_from_cell(2, 9, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    nsx_host_overlay_network_profile_name = get_value_from_cell(2, 10, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    nsx_host_overlay_network_pool_description = get_value_from_cell(2, 11, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    nsx_host_overlay_network_pool_name = get_value_from_cell(2, 12, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
     # Init the vcf 5.2 json variable
     new_vcf_json_py = {}
     new_vcf_json_py["dvSwitchVersion"] = "7.0.0"
@@ -405,8 +413,8 @@ def vcf_5_2_magic(sheets_from_xls_as_json_py):
     new_vcf_json_py["networkSpecs"] = []
     new_vcf_json_py["networkSpecs"].append({})
     new_vcf_json_py["networkSpecs"][0]["subnet"] = management_vm_network_subnet
-    new_vcf_json_py["networkSpecs"][0]["vlanId"] = management_vm_network_vlan_id
-    new_vcf_json_py["networkSpecs"][0]["mtu"] = management_vm_network_mtu
+    new_vcf_json_py["networkSpecs"][0]["vlanId"] = str(management_vm_network_vlan_id)
+    new_vcf_json_py["networkSpecs"][0]["mtu"] = str(management_vm_network_mtu)
     new_vcf_json_py["networkSpecs"][0]["networkType"] = "MANAGEMENT"
     new_vcf_json_py["networkSpecs"][0]["gateway"] = management_vm_network_gateway
     new_vcf_json_py["networkSpecs"].append({})
@@ -421,8 +429,8 @@ def vcf_5_2_magic(sheets_from_xls_as_json_py):
     new_vcf_json_py["networkSpecs"][1]["includeIpAddress"].append(vsan_subnet[0]+"."+vsan_subnet[1]+"."+vsan_subnet[2]+"."+"50")
     new_vcf_json_py["networkSpecs"][1]["includeIpAddress"].append(vsan_subnet[0]+"."+vsan_subnet[1]+"."+vsan_subnet[2]+"."+"49")
     #End magic (include IP addresses)
-    new_vcf_json_py["networkSpecs"][1]["vlanId"] = vsan_vm_network_vlan_id
-    new_vcf_json_py["networkSpecs"][1]["mtu"] = vsan_vm_network_mtu
+    new_vcf_json_py["networkSpecs"][1]["vlanId"] = str(vsan_vm_network_vlan_id)
+    new_vcf_json_py["networkSpecs"][1]["mtu"] = str(vsan_vm_network_mtu)
     new_vcf_json_py["networkSpecs"][1]["networkType"] = "VSAN"
     new_vcf_json_py["networkSpecs"][1]["gateway"] = vsan_vm_network_gateway
     new_vcf_json_py["networkSpecs"].append({})
@@ -431,8 +439,8 @@ def vcf_5_2_magic(sheets_from_xls_as_json_py):
     new_vcf_json_py["networkSpecs"][2]["includeIpAddressRanges"].append({})
     new_vcf_json_py["networkSpecs"][2]["includeIpAddressRanges"][0]["startIpAddress"] = vmotion_pool_start_ip
     new_vcf_json_py["networkSpecs"][2]["includeIpAddressRanges"][0]["endIpAddress"] = vmotion_pool_end_ip
-    new_vcf_json_py["networkSpecs"][2]["vlanId"] = vmotion_vm_network_vlan_id
-    new_vcf_json_py["networkSpecs"][2]["mtu"] = vmotion_vm_network_mtu
+    new_vcf_json_py["networkSpecs"][2]["vlanId"] = str(vmotion_vm_network_vlan_id)
+    new_vcf_json_py["networkSpecs"][2]["mtu"] = str(vmotion_vm_network_mtu)
     new_vcf_json_py["networkSpecs"][2]["networkType"] = "VMOTION"
     new_vcf_json_py["networkSpecs"][2]["gateway"] = vmotion_vm_network_gateway
     new_vcf_json_py["nsxtSpec"] = {}
@@ -451,18 +459,18 @@ def vcf_5_2_magic(sheets_from_xls_as_json_py):
     new_vcf_json_py["nsxtSpec"]["nsxtAdminPassword"] = nsxm_admin_password
     new_vcf_json_py["nsxtSpec"]["nsxtAuditPassword"] = nsxm_audit_password
     new_vcf_json_py["nsxtSpec"]["overLayTransportZone"] = {}
-    new_vcf_json_py["nsxtSpec"]["overLayTransportZone"]["zoneName"] = ""
-    new_vcf_json_py["nsxtSpec"]["overLayTransportZone"]["networkName"] = ""
+    new_vcf_json_py["nsxtSpec"]["overLayTransportZone"]["zoneName"] = "vcf01-tz-overlay" #hardcoded doesn't exist in workbook
+    new_vcf_json_py["nsxtSpec"]["overLayTransportZone"]["networkName"] = "vcf01-tz-overlay-network" #hardcoded doesn't exist in workbook
     new_vcf_json_py["nsxtSpec"]["vlanTransportZone"] = {}
-    new_vcf_json_py["nsxtSpec"]["vlanTransportZone"]["zoneName"] = ""
-    new_vcf_json_py["nsxtSpec"]["vlanTransportZone"]["networkName"] = ""
+    new_vcf_json_py["nsxtSpec"]["vlanTransportZone"]["zoneName"] = "vcf01-tz-zone" #hardcoded doesn't exist in workbook
+    new_vcf_json_py["nsxtSpec"]["vlanTransportZone"]["networkName"] = "vcf01-tz-zone-network" #hardcoded doesn't exist in workbook
     new_vcf_json_py["nsxtSpec"]["vip"] = nsx_mgr_vip
     new_vcf_json_py["nsxtSpec"]["vipFqdn"] = nsx_mgr_hostname
     new_vcf_json_py["nsxtSpec"]["nsxtLicense"] = nsx_license_key
-    new_vcf_json_py["nsxtSpec"]["transportVlanId"] = nsx_host_overlay_vlan_id
+    new_vcf_json_py["nsxtSpec"]["transportVlanId"] = str(nsx_host_overlay_vlan_id)
     new_vcf_json_py["nsxtSpec"]["ipAddressPoolSpec"] = {}
-    new_vcf_json_py["nsxtSpec"]["ipAddressPoolSpec"]["name"] = "sfo01-m01-cl01-tep01" #default - doesnt exist anywhere in the workbook
-    new_vcf_json_py["nsxtSpec"]["ipAddressPoolSpec"]["description"] = "ESXi Host Overlay TEP IP Pool" #default - doesnt exist anywhere in the workbook
+    new_vcf_json_py["nsxtSpec"]["ipAddressPoolSpec"]["name"] = nsx_host_overlay_network_pool_description
+    new_vcf_json_py["nsxtSpec"]["ipAddressPoolSpec"]["description"] = nsx_host_overlay_network_pool_description
     new_vcf_json_py["nsxtSpec"]["ipAddressPoolSpec"]["subnets"] = []
     new_vcf_json_py["nsxtSpec"]["ipAddressPoolSpec"]["subnets"].append({})
     new_vcf_json_py["nsxtSpec"]["ipAddressPoolSpec"]["subnets"][0]["ipAddressPoolRanges"] = []
@@ -477,7 +485,7 @@ def vcf_5_2_magic(sheets_from_xls_as_json_py):
     new_vcf_json_py["vsanSpec"]["datastoreName"] = vsan_datastore_name
     new_vcf_json_py["dvsSpecs"] = []
     new_vcf_json_py["dvsSpecs"].append({})
-    new_vcf_json_py["dvsSpecs"][0]["mtu"] = 8490 #default - doesnt exist anywhere in the workbook
+    new_vcf_json_py["dvsSpecs"][0]["mtu"] = str(vds_mtu)
     new_vcf_json_py["dvsSpecs"][0]["niocSpecs"] = []
     new_vcf_json_py["dvsSpecs"][0]["niocSpecs"].append({})
     #Keep all of the niocspecs defaults - these are vmware standards
@@ -588,8 +596,8 @@ def vcf_5_2_magic(sheets_from_xls_as_json_py):
         if esxi_values_from_xls[i]["hostname"]:
             new_vcf_json_py["hostSpecs"].append({})
             new_vcf_json_py["hostSpecs"][i]["credentials"] = {}
-            new_vcf_json_py["hostSpecs"][i]["username"] = "root" #hardcoded
-            new_vcf_json_py["hostSpecs"][i]["password"] = esxi_password
+            new_vcf_json_py["hostSpecs"][i]["credentials"]["username"] = "root" #hardcoded
+            new_vcf_json_py["hostSpecs"][i]["credentials"]["password"] = esxi_password
             new_vcf_json_py["hostSpecs"][i]["ipAddressPrivate"] = {}
             esxi_cidr = management_vm_network_subnet[-2:]
             esxi_netmask = get_netmask(esxi_cidr)

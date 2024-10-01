@@ -272,6 +272,66 @@ def vcf_5_2_magic(sheets_from_xls_as_json_py):
     dns_servers.append(get_value_from_cell(3, 20, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval))
     dns_servers.append(get_value_from_cell(3, 21, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval))
     sftp_server = get_value_from_cell(3, 31, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    # Populate info from Tab 5: "Name & IP Address Inputs - Rack"
+    tab = 5
+    col_calibrationval = 0
+    row_calibrationval = -2
+    esxi_values_from_xls = []
+    esxi_values_from_xls.append({})
+    esxi_values_from_xls[0]["hostname"] = get_value_from_cell(3, 9, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls[0]["ip"] = get_value_from_cell(5, 9, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls.append({})
+    esxi_values_from_xls[1]["hostname"] = get_value_from_cell(3, 10, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls[1]["ip"] = get_value_from_cell(5, 10, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls.append({})
+    esxi_values_from_xls[2]["hostname"] = get_value_from_cell(3, 11, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls[2]["ip"] = get_value_from_cell(5, 11, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls.append({})
+    esxi_values_from_xls[3]["hostname"] = get_value_from_cell(3, 12, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls[3]["ip"] = get_value_from_cell(5, 12, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    # Note: these values may be null - only 4 hosts are required for VCF bringup
+    esxi_values_from_xls.append({})
+    esxi_values_from_xls[4]["hostname"] = get_value_from_cell(3, 13, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls[4]["ip"] = get_value_from_cell(5, 13, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls.append({})
+    esxi_values_from_xls[5]["hostname"] = get_value_from_cell(3, 14, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls[5]["ip"] = get_value_from_cell(5, 14, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls.append({})
+    esxi_values_from_xls[6]["hostname"] = get_value_from_cell(3, 15, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls[6]["ip"] = get_value_from_cell(5, 15, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls.append({})
+    esxi_values_from_xls[7]["hostname"] = get_value_from_cell(3, 16, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls[7]["ip"] = get_value_from_cell(5, 16, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls.append({})
+    esxi_values_from_xls[8]["hostname"] = get_value_from_cell(3, 17, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls[8]["ip"] = get_value_from_cell(5, 17, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls.append({})
+    esxi_values_from_xls[9]["hostname"] = get_value_from_cell(3, 18, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls[9]["ip"] = get_value_from_cell(5, 18, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls.append({})
+    esxi_values_from_xls[10]["hostname"] = get_value_from_cell(3, 19, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls[10]["ip"] = get_value_from_cell(5, 19, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls.append({})
+    esxi_values_from_xls[11]["hostname"] = get_value_from_cell(3, 20, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls[11]["ip"] = get_value_from_cell(5, 20, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls.append({})
+    esxi_values_from_xls[12]["hostname"] = get_value_from_cell(3, 21, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls[12]["ip"] = get_value_from_cell(5, 21, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls.append({})
+    esxi_values_from_xls[13]["hostname"] = get_value_from_cell(3, 22, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls[13]["ip"] = get_value_from_cell(5, 22, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls.append({})
+    esxi_values_from_xls[14]["hostname"] = get_value_from_cell(3, 23, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls[14]["ip"] = get_value_from_cell(5, 23, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls.append({})
+    esxi_values_from_xls[15]["hostname"] = get_value_from_cell(3, 24, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    esxi_values_from_xls[15]["ip"] = get_value_from_cell(5, 24, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    vmotion_pool_start_ip = get_value_from_cell(5, 55, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    vmotion_pool_end_ip = get_value_from_cell(5, 56, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    vsan_pool_start_ip = get_value_from_cell(5, 57, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    vsan_pool_end_ip = get_value_from_cell(5, 58, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    host_tep_overlay_pool_start_ip = get_value_from_cell(5, 59, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    host_tep_overlay_pool_end_ip = get_value_from_cell(5, 60, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
     # Populate info from Tab 6: "SDDC Inputs - Common"
     tab = 6
     col_calibrationval = 0
@@ -311,6 +371,10 @@ def vcf_5_2_magic(sheets_from_xls_as_json_py):
     datacenter_name = get_value_from_cell(3, 122, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
     mgt_cluster_name = get_value_from_cell(3, 125, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
     mgt_cluster_evc_settings = get_value_from_cell(3, 126, sheets_from_xls_as_json_py[tab], col_calibrationval, row_calibrationval)
+    if mgt_cluster_evc_settings:
+        mgt_cluster_evc_settings = mgt_cluster_evc_settings
+    else:
+        mgt_cluster_evc_settings = ""
     # Init the vcf 5.2 json variable
     new_vcf_json_py = {}
     new_vcf_json_py["dvSwitchVersion"] = "7.0.0"
@@ -347,32 +411,26 @@ def vcf_5_2_magic(sheets_from_xls_as_json_py):
     new_vcf_json_py["networkSpecs"][0]["gateway"] = management_vm_network_gateway
     new_vcf_json_py["networkSpecs"].append({})
     new_vcf_json_py["networkSpecs"][1]["subnet"] = vsan_vm_network_subnet
-    #Magic to reduce complexity (include IP address ranges)
-    vsan_subnet = vsan_vm_network_subnet.split(".")
     new_vcf_json_py["networkSpecs"][1]["includeIpAddressRanges"] = []
     new_vcf_json_py["networkSpecs"][1]["includeIpAddressRanges"].append({})
-    new_vcf_json_py["networkSpecs"][1]["includeIpAddressRanges"][0]["startIpAddress"] = vsan_subnet[0]+"."+vsan_subnet[1]+"."+vsan_subnet[2]+"."+"7"
-    new_vcf_json_py["networkSpecs"][1]["includeIpAddressRanges"][0]["endIpAddress"] = vsan_subnet[0]+"."+vsan_subnet[1]+"."+vsan_subnet[2]+"."+"48"
-    new_vcf_json_py["networkSpecs"][1]["includeIpAddressRanges"].append({})
-    new_vcf_json_py["networkSpecs"][1]["includeIpAddressRanges"][1]["startIpAddress"] = vsan_subnet[0]+"."+vsan_subnet[1]+"."+vsan_subnet[2]+"."+"3"
-    new_vcf_json_py["networkSpecs"][1]["includeIpAddressRanges"][1]["endIpAddress"] = vsan_subnet[0]+"."+vsan_subnet[1]+"."+vsan_subnet[2]+"."+"6"
+    new_vcf_json_py["networkSpecs"][1]["includeIpAddressRanges"][0]["startIpAddress"] = vsan_pool_start_ip
+    new_vcf_json_py["networkSpecs"][1]["includeIpAddressRanges"][0]["endIpAddress"] = vsan_pool_end_ip
+    #Magic to reduce complexity (include IP addresses)
+    vsan_subnet = vsan_vm_network_subnet.split(".")
     new_vcf_json_py["networkSpecs"][1]["includeIpAddress"] = []
     new_vcf_json_py["networkSpecs"][1]["includeIpAddress"].append(vsan_subnet[0]+"."+vsan_subnet[1]+"."+vsan_subnet[2]+"."+"50")
     new_vcf_json_py["networkSpecs"][1]["includeIpAddress"].append(vsan_subnet[0]+"."+vsan_subnet[1]+"."+vsan_subnet[2]+"."+"49")
-    #End magic (include IP address ranges)
+    #End magic (include IP addresses)
     new_vcf_json_py["networkSpecs"][1]["vlanId"] = vsan_vm_network_vlan_id
     new_vcf_json_py["networkSpecs"][1]["mtu"] = vsan_vm_network_mtu
     new_vcf_json_py["networkSpecs"][1]["networkType"] = "VSAN"
     new_vcf_json_py["networkSpecs"][1]["gateway"] = vsan_vm_network_gateway
     new_vcf_json_py["networkSpecs"].append({})
     new_vcf_json_py["networkSpecs"][2]["subnet"] = vmotion_vm_network_subnet
-    #Magic to reduce complexity (include IP address ranges)
-    vmotion_subnet = vmotion_vm_network_subnet.split(".")
     new_vcf_json_py["networkSpecs"][2]["includeIpAddressRanges"] = []
     new_vcf_json_py["networkSpecs"][2]["includeIpAddressRanges"].append({})
-    new_vcf_json_py["networkSpecs"][2]["includeIpAddressRanges"][0]["startIpAddress"] = vmotion_subnet[0]+"."+vmotion_subnet[1]+"."+vmotion_subnet[2]+"."+"3"
-    new_vcf_json_py["networkSpecs"][2]["includeIpAddressRanges"][0]["endIpAddress"] = vmotion_subnet[0]+"."+vmotion_subnet[1]+"."+vmotion_subnet[2]+"."+"50"
-    #End magic (include IP address ranges)
+    new_vcf_json_py["networkSpecs"][2]["includeIpAddressRanges"][0]["startIpAddress"] = vmotion_pool_start_ip
+    new_vcf_json_py["networkSpecs"][2]["includeIpAddressRanges"][0]["endIpAddress"] = vmotion_pool_end_ip
     new_vcf_json_py["networkSpecs"][2]["vlanId"] = vmotion_vm_network_vlan_id
     new_vcf_json_py["networkSpecs"][2]["mtu"] = vmotion_vm_network_mtu
     new_vcf_json_py["networkSpecs"][2]["networkType"] = "VMOTION"
@@ -407,14 +465,10 @@ def vcf_5_2_magic(sheets_from_xls_as_json_py):
     new_vcf_json_py["nsxtSpec"]["ipAddressPoolSpec"]["description"] = "ESXi Host Overlay TEP IP Pool" #default - doesnt exist anywhere in the workbook
     new_vcf_json_py["nsxtSpec"]["ipAddressPoolSpec"]["subnets"] = []
     new_vcf_json_py["nsxtSpec"]["ipAddressPoolSpec"]["subnets"].append({})
-    #Magic to reduce complexity (include IP address ranges)
-    tep_subnet_full = nsx_host_overlay_subnet[:-3]
-    tep_subnet = tep_subnet_full.split(".")
     new_vcf_json_py["nsxtSpec"]["ipAddressPoolSpec"]["subnets"][0]["ipAddressPoolRanges"] = []
     new_vcf_json_py["nsxtSpec"]["ipAddressPoolSpec"]["subnets"][0]["ipAddressPoolRanges"].append({})
-    new_vcf_json_py["nsxtSpec"]["ipAddressPoolSpec"]["subnets"][0]["ipAddressPoolRanges"][0]["start"] = tep_subnet[0]+"."+tep_subnet[1]+"."+tep_subnet[2]+"."+"101"
-    new_vcf_json_py["nsxtSpec"]["ipAddressPoolSpec"]["subnets"][0]["ipAddressPoolRanges"][0]["end"] = tep_subnet[0]+"."+tep_subnet[1]+"."+tep_subnet[2]+"."+"108"
-    #End magic (include IP address ranges)
+    new_vcf_json_py["nsxtSpec"]["ipAddressPoolSpec"]["subnets"][0]["ipAddressPoolRanges"][0]["start"] = host_tep_overlay_pool_start_ip
+    new_vcf_json_py["nsxtSpec"]["ipAddressPoolSpec"]["subnets"][0]["ipAddressPoolRanges"][0]["end"] = host_tep_overlay_pool_end_ip
     new_vcf_json_py["nsxtSpec"]["ipAddressPoolSpec"]["subnets"][0]["cidr"] = nsx_host_overlay_subnet
     new_vcf_json_py["nsxtSpec"]["ipAddressPoolSpec"]["subnets"][0]["gateway"] = nsx_host_overlay_gateway
     new_vcf_json_py["vsanSpec"] = {}
@@ -459,13 +513,93 @@ def vcf_5_2_magic(sheets_from_xls_as_json_py):
     #Keep network defaults - these are vmware standards
     new_vcf_json_py["dvsSpecs"][0]["networks"] = ["MANAGEMENT", "VSAN", "VMOTION"]
     #End network defaults
-    print("")
-    print("")
-    print("* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *")
-    print("STOP! This code is a work in progress.")
-    print("TODO: clusterSpec, pscSpecs, vCenterSpec, and hostSpecs")
-    print("Continue at your own risk.")
-    print("* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *")
-    print("")
-    print("")
+    new_vcf_json_py["clusterSpec"] = {}
+    new_vcf_json_py["clusterSpec"]["clusterName"] = mgt_cluster_name
+    new_vcf_json_py["clusterSpec"]["clusterEvcMode"] = mgt_cluster_evc_settings
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"] = []
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"].append({})
+    #Defaults - values below don't exist in the workbook, these can be changed later via vCenter
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][0]["cpuSharesLevel"] = "high"
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][0]["cpuSharesValue"] = 0
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][0]["name"] = "sddc-mgmt"
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][0]["memorySharesValue"] = 0
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][0]["cpuReservationPercentage"] = 0
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][0]["memoryLimit"] = -1
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][0]["memoryReservationPercentage"] = 0
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][0]["cpuReservationExpandable"] = True
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][0]["memoryReservationExpandable"] = True 
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][0]["memorySharesLevel"] = "normal"
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][0]["cpuLimit"] = -1
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][0]["type"] = "management"
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"].append({})
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][1]["cpuSharesLevel"] = "high"
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][1]["cpuSharesValue"] = 0
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][1]["name"] = "sddc-network"
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][1]["memorySharesValue"] = 0
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][1]["cpuReservationPercentage"] = 0
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][1]["memoryLimit"] = -1
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][1]["memoryReservationPercentage"] = 0
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][1]["cpuReservationExpandable"] = True
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][1]["memoryReservationExpandable"] = True 
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][1]["memorySharesLevel"] = "normal"
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][1]["cpuLimit"] = -1
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][1]["type"] = "network"
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"].append({})
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][2]["cpuSharesLevel"] = "normal"
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][2]["cpuSharesValue"] = 0
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][2]["name"] = "sddc-compute"
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][2]["memorySharesValue"] = 0
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][2]["cpuReservationPercentage"] = 0
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][2]["memoryLimit"] = -1
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][2]["memoryReservationPercentage"] = 0
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][2]["cpuReservationExpandable"] = True
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][2]["memoryReservationExpandable"] = True 
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][2]["memorySharesLevel"] = "normal"
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][2]["cpuLimit"] = -1
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][2]["type"] = "compute"
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"].append({})
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][3]["name"] = "user-compute"
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][3]["type"] = "compute"
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][3]["cpuReservationMhz"] = 2100
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][3]["cpuLimit"] = -1
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][3]["cpuReservationExpandable"] = True 
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][3]["cpuSharesLevel"] = "normal"
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][3]["memoryReservationMb"] = 3128
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][3]["memoryReservationExpandable"] = True 
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][3]["memorySharesLevel"] = "normal"
+    new_vcf_json_py["clusterSpec"]["resourcePoolSpecs"][3]["memorySharesValue"] = 0
+    new_vcf_json_py["pscSpecs"] = []
+    new_vcf_json_py["pscSpecs"].append({})
+    new_vcf_json_py["pscSpecs"][0]["pscId"] = "psc-1" #default - no value in workbook
+    new_vcf_json_py["pscSpecs"][0]["pscSsoSpec"] = {}
+    new_vcf_json_py["pscSpecs"][0]["pscSsoSpec"]["ssoDomain"] = "vsphere.local" #default - no value in workbook
+    new_vcf_json_py["pscSpecs"][0]["adminUserSsoPassword"] = vc_admin_password
+    new_vcf_json_py["vcenterSpec"] = {}
+    new_vcf_json_py["vcenterSpec"]["vcenterIp"] = vcsa_ip
+    new_vcf_json_py["vcenterSpec"]["vcenterHostname"] = vcsa_hostname
+    new_vcf_json_py["vcenterSpec"]["licenseFile"] = vcenter_license_key
+    new_vcf_json_py["vcenterSpec"]["rootVcenterPassword"] = vc_root_password
+    new_vcf_json_py["vcenterSpec"]["vmSize"] = vcsa_size
+
+    esxi_values_from_xls_length = len(esxi_values_from_xls)
+    i=0
+    new_vcf_json_py["hostSpecs"] = []
+    while i < esxi_values_from_xls_length:
+        if esxi_values_from_xls[i]["hostname"]:
+            new_vcf_json_py["hostSpecs"].append({})
+            new_vcf_json_py["hostSpecs"][i]["credentials"] = {}
+            new_vcf_json_py["hostSpecs"][i]["username"] = "root" #hardcoded
+            new_vcf_json_py["hostSpecs"][i]["password"] = esxi_password
+            new_vcf_json_py["hostSpecs"][i]["ipAddressPrivate"] = {}
+            esxi_cidr = management_vm_network_subnet[-2:]
+            esxi_netmask = get_netmask(esxi_cidr)
+            new_vcf_json_py["hostSpecs"][i]["ipAddressPrivate"]["subnet"] = esxi_netmask
+            new_vcf_json_py["hostSpecs"][i]["ipAddressPrivate"]["cidr"] = esxi_cidr
+            new_vcf_json_py["hostSpecs"][i]["ipAddressPrivate"]["ipAddress"] = esxi_values_from_xls[i]["ip"]
+            new_vcf_json_py["hostSpecs"][i]["ipAddressPrivate"]["gateway"] = management_vm_network_gateway
+            new_vcf_json_py["hostSpecs"][i]["hostname"] = esxi_values_from_xls[i]["hostname"]
+            new_vcf_json_py["hostSpecs"][i]["vSwitch"] = "vSwitch0" #hardcoded
+            new_vcf_json_py["hostSpecs"][i]["serverId"] = "host-"+str(i) #hardcoded
+            new_vcf_json_py["hostSpecs"][i]["association"] = datacenter_name
+        i=i+1
     return new_vcf_json_py

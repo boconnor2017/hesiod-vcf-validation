@@ -96,4 +96,7 @@ else:
         print("")
         print("Your JSON configuration file is ready.")
         print("File name: "+inputparams[3])
+        print("")
+        print("RECOMMENDED: run the following script to convert this json to markdown, and review BEFORE uploading to cloud builder.")
+        print("python3 hesiod-vcf-validate.py --md "+inputparams[3]+" vcf-validation.md")
 

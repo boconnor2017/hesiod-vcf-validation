@@ -31,13 +31,15 @@ cd hesiod-vcf-validation
 ```
 
 ## Generate a VCF JSON File from XLS Prerequisite Workbook
-Save a `vcf-papw.xlsx` (VCF Planning and Preparation Workbook) file to the `/usr/local/hesiod-vcf-validation/` folder and run the command below to create `vcf.json`. *Note: The naming convention of the JSON file and the MD file are up to you.*
+Download and populate the [VCF 5.2 Planning and Preparation Workbook](https://docs.vmware.com/en/VMware-Cloud-Foundation/5.2/vcf-planning-and-preparation-workbook.zip).
+
+Save a copy of the `vcf-papw.xlsx` (VCF Planning and Preparation Workbook) file to the `/usr/local/hesiod-vcf-validation/` folder and run the command below to create `vcf.json`. *Note: The naming convention of the XLSX file and the JSON file are up to you.*
 ```
 python3 hesiod-vcf-validate.py --xls vcf-papw.xlsx vcf.json
 ```
 
 ## Generate VCF Configuration File in Markdown
-Save a `vcf.json` file to the `/usr/local/hesiod-vcf-validation/` folder and run the command below to create `vcf-validation.md`. *Note: The naming convention of the JSON file and the MD file are up to you.* 
+Save a copy of the populated `vcf.json` file to the `/usr/local/hesiod-vcf-validation/` folder and run the command below to create `vcf-validation.md`. *Note: The naming convention of the JSON file and the MD file are up to you.* 
 ```
 python3 hesiod-vcf-validate.py --md vcf.json vcf-validation.md
 ```
